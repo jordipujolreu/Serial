@@ -9,25 +9,25 @@
 
 //********** Variables ************************************************************
 int comptar = 12;
+
 //********** Setup ****************************************************************
-void setup()                    // run once, when the sketch starts
+void setup() 
 {
-  Serial.begin(9600);       // set up Serial library at 9600 bps
-  Serial.print("Ara comptare de 0 a ");
-  Serial.println(comptar);
-  for (int i=0; i <= comptar; i++) //primer de tot comença en 0 acaba en 11 i va comptant sumant
-  {
-    Serial.print(i); //valor 
-    Serial.print("-"); //guió entre números
-  } 
-}
-//********** Loop *****************************************************************
-void loop()     // we need this to be here even though its empty
-{
+  Serial.begin(9600);
   
+  Serial.print("Ara comptare de 0 a "); //escriure el seguent missatge
+  Serial.println(comptar); //escriure el valor
+  for (int i=0; i < comptar; i++) // comença amb 0 acaba en 12 i conta ascendent
+  {
+    Serial.print(i); 
+    Serial.print("-");
+  }
+  Serial.print(comptar); // finalitzem el missatge escrivint el numero
+}
+
+//********** Loop *****************************************************************
+void loop()  
+{
 }
 
 //********** Funcions *************************************************************
-
-
-

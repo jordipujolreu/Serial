@@ -8,21 +8,15 @@
 //********** Includes *************************************************************
 
 //********** Variables ************************************************************
-
-//********** Setup ****************************************************************
-
-//********** Loop *****************************************************************
-
-//********** Funcions *************************************************************
 int kgCO2m2 = 15;
-
+//********** Setup ****************************************************************
 void setup()              // run once, when the sketch starts
 {
   Serial.begin(9600);     // set up Serial library at 9600 bps
 
-  if (kgCO2m2 < 3.5 )
+  if (kgCO2m2 < 3.5 ) //si compleix condició...
 
-  Serial.print (" Qualificació energètica A ");
+  Serial.print (" Qualificació energètica A "); // escriurà aixo...
 
   else if (kgCO2m2 <6.5)
 
@@ -49,12 +43,18 @@ void setup()              // run once, when the sketch starts
   Serial.print("Qualificació energètica C");
 
 }
-
-  void loop()   // we need this to be here even though its empty
+//********** Loop *****************************************************************
+ void loop()   // we need this to be here even though its empty
 {
 }
 
 
+//********** Funcions *************************************************************
+
+
+
+
+ 
   
 
 
