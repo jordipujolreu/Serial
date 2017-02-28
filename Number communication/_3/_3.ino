@@ -1,76 +1,55 @@
 /**********************************************************************************
 **                                                                               **
-**                               SERIAL                                          **
-**                         Number comunication                                   **
-**  NOM : Jordi Pujlreu Sala                                   DATA: 13/2/17     **
+**                             Number comunication                               **
+**                                                                               **
+**   NOM: Jordi Pujolreu Sala                             DATA: 27 / 02 / 2017   **
 **********************************************************************************/
+//********** INCLUDE **************************************************************
 
-//********** Includes *************************************************************
+//********** VARIABLES ************************************************************
+int numero;           
 
-//********** Variables ********************************************************
-int r ;
-int numero ;             // variables for the R's
-//********** Setup ************************************************************
-void setup() { 
-  Serial.begin(9600);        // initialize serial
-  Serial.println("Entra un número");
+//********** SETUP ****************************************************************
+void setup() 
+{                         // S'executa un sol cop
+  Serial.begin(9600);     // Configura una biblioteca a 9600 bpm
+  Serial.println ("Entra un numero");   // Escriu  (Entra un numero)
+  
 }
-//********** Loop *************************************************************
-void loop() {
-  while (Serial.available() > 0) {  // if there's any serial available, read it
-    numero = Serial.parseInt();// look for valid int the incoming serial stream
-   
-    
-    if (Serial.read() == '\n') { // quan presionem enter significa que hem acabat d'enviar dades
-   
-    r = numero % 10000;
-    
-    if ( r == 1 )
-    {
-    Serial.print ("El");
-    Serial.print (numero);
-    Serial.println ("te cinc xifres");
-    }
-    
-    r= numero % 1000;
-    
-    else if ( r == 1)
-    {
-     Serial.print ("El");
-    Serial.print (numero);
-    Serial.println ("te quatre xifres");
-    }
-
-   r= numero % 100;
-
-   else if ( r == 1)
-    {
-    Serial.print ("El");
-    Serial.print (numero);
-    Serial.println ("te tres xifres");
-    }
-    r = numero % 10;
-
-    else if ( r == 1)
-    {
-     Serial.print ("El");
-    Serial.print (numero);
-    Serial.println ("te dos xifres");
-    }
-    r= numero % 10;
-    else if ( r == 0)
-    {
-     Serial.print ("El");
-    Serial.print (numero);
-    Serial.println ("te una xifres");
-    }
-    
-    
-    
- 
-    Serial.println("Entra nous valors per al numero");
-        
-    }
+//********** LOOP *****************************************************************
+ void loop ()
+ {
+   while (Serial.available() > 0) {      
+    numero = Serial.parseFloat(); 
+    Serial.print ("El numero ");     //escriu...   
+    Serial.print (numero);                   
+    if (numero / 10 == 0)   // significa que te 1 xifra      
+      {
+      Serial.println (" te 1 xifra");  // escriure...
+      }     
+    else if (numero / 100 == 0) // o dos.... 
+      {   
+      Serial.println (" te 2 xifres");  
+      }
+    else if (numero / 1000 == 0) //o tres....
+      {
+      Serial.println (" te 3 xifres");  
+      }
+    else if (numero / 10000 == 0)   // o quatre... 
+      {
+      Serial.println (" te 4 xifres");  
+      }
+    else if (numero / 100000 == 0)  //o cinc
+      {
+      Serial.println (" te 5 xifres");   
+      }
+  
+      
+    if (Serial.read() == '\n')
+    Serial.println (" ");                    
+    Serial.println ("Entra un altre numero");   
+                      
   }
-}
+ }
+
 
