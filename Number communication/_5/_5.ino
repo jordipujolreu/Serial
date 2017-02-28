@@ -13,7 +13,7 @@ int numero ;             // variables for the R's
 //********** Setup ************************************************************
 void setup() { 
   Serial.begin(9600);        // initialize serial
-  Serial.println("Entra un número");
+  Serial.println("Quina mida te el cargol en cm?");
 }
 //********** Loop *************************************************************
 void loop() {
@@ -23,39 +23,34 @@ void loop() {
     
     if (Serial.read() == '\n') { // quan presionem enter significa que hem acabat d'enviar dades
     
-    if (numero <38) //si treballa menys de 38 hores....
-    { r = (numero*20)-((numero*20)*0.05); // al saber que cobra menys de 800 ja apliquem el sou
-    Serial.print( "El salari per "); //escrivim....
-    Serial.print(numero);
-    Serial.print ("hores es de ");
-    Serial.print (r);
-    Serial.println ("euros");
+    if (numero > 11) { //cargl mes gran que 11
+      Serial.println("El cargol es incorrecte");
+    }
+    else if ( numero  >= 8 ) { //de 8 fins que es incorrecte
+      Serial.print ("El cargol amb una mida de ");
+      Serial.print(numero);
+      Serial.println( " cm es molt gran");
+    }
+    else if (numero  >= 5) { //de 5 fins que compleix la anterior
+      Serial.print ("El cargol amb una mida de ");
+      Serial.print(numero);
+      Serial.println( " cm es gran");
+    }
+    else if (numero >= 3) { //de 3 fins que comleix la anterior
+      Serial.print ("El cargol amb una mida de ");
+      Serial.print(numero);
+      Serial.println( " cm es mitja");
+    }
+    else { //si no es cap de les anteriors...
+      Serial.print ("El cargol amb una mida de ");
+      Serial.print(numero);
+      Serial.println( " cm es petit");
+      
     }
     
-    else { //si treballa 38 o més....
-    r = (37 * 20) + ((numero - 37) * 30); //calculem el sou cobrat per hores ja amb les extres
-    }
     
-    if (r >800) //si es superior a 800...
-    {
-    r= r-(r*0.1); //impost de 10 per cent
-    Serial.print( "El salari per ");
-    Serial.print(numero);
-    Serial.print ("hores es de ");
-    Serial.print (r);
-    Serial.println ("euros");
-    }
     
-    else { //si és inferior a 800....
-    r = r-(r*0.05); //impost del cinc per cent
-    Serial.print( "El salari per ");
-    Serial.print(numero);
-    Serial.print ("hores es de ");
-    Serial.print (r);
-    Serial.println ("euros");
-    }
-    
-    Serial.println("Entra nous valors per al numero");
+    Serial.println("Quina mida te el cargol en cm?");
     
     
     
